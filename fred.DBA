@@ -1,0 +1,50 @@
+ambient=0
+direction=1
+red=0
+green=0
+blue=0
+sync on
+sync rate 60
+hide mouse
+sync rate 50
+hide mouse
+color backdrop rgb(0,60,60)
+dim angle(7)
+dim posx(7)
+dim posz(7)
+make object cube 1,75
+scale object 1,20,20,20
+load image "horse1.jpg",1
+texture object 1,1
+pitch camera down 25
+move camera -300
+angle(1)=0
+angle(2)=72
+angle(3)=144
+angle(4)=216
+angle(5)=288
+angle(6)=360
+radius=150
+
+repeat
+ rem for n=1 to 6
+   posx(1)=cos(angle(1))*radius
+   posz(1)=sin(angle(1))*radius
+   angle(1)=angle(1)+1
+   position object 1,posx(1),0,posz(1)
+   xrotate object 1,object angle x(1)+1
+   yrotate object 1,object angle y(1)+0.5
+ rem next n
+  sync
+until escapekey()=1
+show mouse
+end
+
+remstart
+  if you use a variable 'n' to identify multiple objects and
+  a unique angle for each object, you should be able to get 
+  a 'solar system model' to work.  This can be done by
+  substituting 'n' for all the 1's in the above program's
+  main function
+remend
+
